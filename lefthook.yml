@@ -1,0 +1,8 @@
+pre-commit:
+  commands:
+    lint:
+      glob: "./app/*.{js,ts,jsx,tsx}"
+      run: yarn rome check {staged_files}
+    format:
+      glob: "./app/*.{js,ts,jsx,tsx}"
+      run: yarn rome format {staged_files} --write
