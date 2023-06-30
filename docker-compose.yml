@@ -1,0 +1,12 @@
+version: '3.1'
+services:
+  db:
+    container_name: db
+    env_file:
+      - db/docker.env
+    build:
+      context: ./
+      dockerfile: db/Dockerfile
+    image: app-db-latest
+    ports:
+      - 5432:5432
