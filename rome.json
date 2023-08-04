@@ -1,5 +1,4 @@
 {
-  "$schema": "./node_modules/rome/configuration_schema.json",
   "files": {
     "ignore": [".yarn/**/*", "*pnp*.*", "*/dist/**/*", ".next/**/*"]
   },
@@ -13,7 +12,7 @@
     "enabled": true,
     "indentSize": 2,
     "indentStyle": "space",
-    "lineWidth": 100
+    "lineWidth": 120
   },
   "javascript": {
     "formatter": {

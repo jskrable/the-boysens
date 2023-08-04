@@ -1,3 +1,5 @@
+import Link from '@/components/link';
+
 export default function Home() {
   return (
     <div className='flex flex-col gap-4'>
@@ -6,9 +8,20 @@ export default function Home() {
         This is a memorial page for Jim and Sam Skrable. They left this world as they entered it,
         together.
       </p>
-      <a className='hover:underline' href='https://www.facebook.com/109Darlington/videos/355830855737887/' target='_blank' rel="noreferrer">
+      <Link
+        className='hover:underline'
+        href='https://www.facebook.com/109Darlington/videos/355830855737887/'
+        target='_blank'
+        rel='noreferrer'
+      >
         Recording of the funeral service
-      </a>
+      </Link>
+      <Link className='hover:underline' href='/memories'>
+        Memories
+      </Link>
+      <Link className='hover:underline' href='/resources'>
+        Resources
+      </Link>
     </div>
   );
 }

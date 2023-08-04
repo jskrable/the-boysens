@@ -14,4 +14,4 @@
 
 ### app
 
-`yarn dev` to startup the dev serer
+`yarn dev` to startup the dev server
