@@ -1,4 +1,4 @@
-import PDF from "@/components/pdf";
+import PDF from '@/components/pdf';
 
 export default function Page() {
   return (
