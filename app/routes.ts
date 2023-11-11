@@ -10,4 +10,4 @@ enum Routes {
   RESOURCES = '/resources',
 }
 
-export default Routes
+export default Routes;
