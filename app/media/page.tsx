@@ -1,4 +1,4 @@
-import Link from '@/components/link';
+import {Link} from '@/app/components/link';
 import Routes from '../routes';
 
 // TODO come up with better name

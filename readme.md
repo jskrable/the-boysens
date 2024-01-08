@@ -15,3 +15,7 @@
 ### app
 
 `yarn dev` to startup the dev server
+
+## build & deploy
+
+https://docs.railway.app/quick-start

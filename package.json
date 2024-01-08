@@ -2,7 +2,7 @@
   "name": "boysens-v2",
   "packageManager": "yarn@4.0.1",
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3020",
     "build": "next build",
     "start": "next start",
     "format": "yarn biome format --write .",
@@ -12,7 +12,7 @@
     "db:seed": "yarn pnpify prisma db seed"
   },
   "prisma": {
-    "seed": "ts-node --transpile-only --compiler-options {\"module\":\"CommonJS\",\"target\":\"es2015\"} db/seed.ts"
+    "seed": "ts-node --transpile-only --compiler-options {\"module\":\"CommonJS\",\"target\":\"es2020\"} db/seed.ts"
   },
   "dependencies": {
     "@prisma/client": "4.16.1",
