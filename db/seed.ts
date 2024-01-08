@@ -21,19 +21,26 @@ async function main() {
         try {
           return JSON.parse(row);
         } catch (e) {
-          console.warn`Error parsing JSON > ${e}`;
+          console.warn(`Error parsing JSON > ${e}`);
         }
       });
     return jsonData;
   });
+
+  const deduplicated = legacyData.reduce<Row[]>((result, entry) => {
+    const existing = result.map(({ Item }) => Item.memory.S);
+    if (!existing.includes(entry.Item.memory.S)) result.push(entry);
+    return result;
+  }, []);
+
   await prisma.memory.createMany({
-    data: legacyData.map(({ Item }) => ({
+    data: deduplicated.map(({ Item }) => ({
       entry: Item.memory.S,
-      // TODO this migh be converting to UTC? Or overcorrecting
       createdAt: new Date(Date.parse(Item.timestamp.S)),
     })),
   });
 }
+
 main()
   .then(async () => {
     await prisma.$disconnect();

@@ -1,15 +1,17 @@
+import { Navbar } from './components/navbar';
 import './globals.css';
 
 export const metadata = {
   title: 'The Boysens',
-  description: 'Memorial for Jim and Sam Skrable',
+  description: 'They did everything together',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang='en'>
       <body>
-        <main className='flex min-h-screen flex-col items-center justify-between p-24'>
+        <Navbar/>
+        <main className='flex min-h-screen flex-col items-center justify-between p-12 bg-canvas'>
           {children}
         </main>
       </body>

@@ -1,9 +1,10 @@
-import Link from '@/components/link';
+import {Link} from '@/app/components/link';
+import { Typography } from '../components/typography';
 
 export default async function Page() {
   return (
     <div>
-      <h1>Resources</h1>
+      <Typography variant='h1'>Resources</Typography>
       <div>
         <Link
           href='https://harmreduction.org/resource-center/harm-reduction-near-you/'
