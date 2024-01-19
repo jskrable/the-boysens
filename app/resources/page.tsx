@@ -13,6 +13,8 @@ export default async function Page() {
         >
           Harm Reduction Near You
         </Link>
+        {/* TODO how to use test strips */}
+        {/* TODO where to buy test strips */}
         {/* TODO loading icon while iframe loads */}
         <iframe
           title="Naloxone Map"
