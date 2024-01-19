@@ -5,8 +5,8 @@ module.exports = {
     extend: {
       colors: {
         bark: '#66421e',
-        canvas: '#fff5e6'
-      }
+        canvas: '#fff5e6',
+      },
     },
   },
   plugins: [],

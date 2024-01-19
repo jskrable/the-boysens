@@ -5,10 +5,10 @@ type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & { href: string; child
 
 function Link({ children, ...props }: LinkProps) {
   return (
-    <NextLink className='hover:underline' {...props}>
+    <NextLink className="hover:underline" {...props}>
       {children}
     </NextLink>
   );
 }
 
-export { Link }
+export { Link };

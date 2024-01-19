@@ -7,11 +7,13 @@
     "start": "next start",
     "format": "pnpm biome format --write .",
     "lint": "pnpm biome check .",
-    "db:generate": "pnpm prisma generate --schema=./db/schema.prisma",
-    "db:migrate:dev": "pnpm prisma migrate dev --schema=./db/schema.prisma",
+    "db:explore": "pnpm prisma studio",
+    "db:generate": "pnpm prisma generate",
+    "db:migrate:dev": "pnpm prisma migrate dev",
     "db:seed": "pnpm prisma db seed"
   },
   "prisma": {
+    "schema": "./db/schema.prisma",
     "seed": "ts-node --transpile-only --compiler-options {\"module\":\"CommonJS\",\"target\":\"es2020\"} db/seed.ts"
   },
   "dependencies": {

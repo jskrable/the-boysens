@@ -15,3 +15,25 @@ model Memory {
 
   @@map("memories")
 }
+
+enum Repository {
+  PUBLIC
+}
+
+model Photo {
+  id Int @id @default(autoincrement())
+  path String
+  repository Repository
+
+  @@map("photos")
+}
+
+model Script {
+  id Int @id @default(autoincrement())
+  path String
+  repository Repository
+  title String
+  description String
+
+  @@map("scripts")
+}
