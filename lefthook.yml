@@ -2,7 +2,7 @@ pre-commit:
   commands:
     lint:
       glob: "app/*.{js,ts,jsx,tsx}"
-      run: yarn biome check {staged_files}
+      run: pnpm biome check {staged_files}
     format:
       glob: "app/*.{js,ts,jsx,tsx}"
-      run: yarn biome format {staged_files} --write
+      run: pnpm biome format {staged_files} --write
