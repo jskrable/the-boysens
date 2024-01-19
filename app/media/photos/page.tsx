@@ -1,14 +1,17 @@
 import { PageTitle } from '@/app/components/pageTitle';
-import { ImageInfo } from './config';
+import { prisma } from '@/db/client';
 
-export default function Page() {
+export default async function Page() {
+  const photos = await prisma.photo.findMany();
+
   return (
     <div>
       <PageTitle title="Photos" />
       <div className="flex flex-col gap-6">
-        {ImageInfo.map(({ caption, path }) => (
+        {photos.map(({ path }) => (
           <div className="basis-1/2">
-            <img src={path} alt={caption} />
+            {/* TODO add captions to DB */}
+            <img src={path} alt="test" />
           </div>
         ))}
       </div>
