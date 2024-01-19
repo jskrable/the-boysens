@@ -71,7 +71,7 @@ async function memories() {
 async function photos() {
   console.log('seeding photos...');
   const data = readdirSync(PHOTO_DIR).map((file) => ({
-    path: join(PHOTO_DIR, file),
+    path: join('/images', file),
     repository: 'PUBLIC' as Repository,
   }));
   await prisma.photo.createMany({ data });
