@@ -10,7 +10,8 @@
     "db:explore": "pnpm prisma studio",
     "db:generate": "pnpm prisma generate",
     "db:migrate:dev": "pnpm prisma migrate dev",
-    "db:seed": "pnpm prisma db seed"
+    "db:seed": "pnpm prisma db seed",
+    "db:setup": "pnpm prisma generate && pnpm prisma migrate dev && pnpm prisma db seed"
   },
   "prisma": {
     "schema": "./db/schema.prisma",
