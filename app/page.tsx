@@ -2,6 +2,7 @@ import { Link } from '@/app/components/link';
 import { Typography } from '@/app/components/typography';
 import { Memory } from './components/memory';
 import { useRandomMemory } from './hooks/useRandomMemory';
+import Loading from './loading';
 import Routes from './routes';
 
 export default async function Home() {
@@ -9,7 +10,7 @@ export default async function Home() {
   const randomMemory = await getRandomMemory();
 
   return (
-    <div className="flex flex-col gap-4 lg:w-3/4">
+    <div className="flex flex-col gap-4">
       <Typography variant="h1">They Did Everything Together</Typography>
       <Typography variant="h2">
         This is a memorial page for Jim and Sam Skrable. They left this world as they entered it, together.

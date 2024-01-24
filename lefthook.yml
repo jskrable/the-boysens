@@ -2,7 +2,10 @@ pre-commit:
   commands:
     lint:
       glob: "app/*.{js,ts,jsx,tsx}"
-      run: pnpm biome check {staged_files}
+      run: pnpm biome check {staged_files} --apply
     format:
       glob: "app/*.{js,ts,jsx,tsx}"
       run: pnpm biome format {staged_files} --write
+    stage-lint:
+      glob: "*.{json,js,jsx,ts,tsx}"
+      run: git add {staged_files}

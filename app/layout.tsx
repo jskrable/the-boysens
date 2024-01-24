@@ -16,7 +16,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     'items-center justify-between',
     'bg-canvas',
     // TODO shrink this a bit for footer
-    'min-h-screen md:w-3/4',
+    // TODO add max width for md & lg
+    'min-h-screen',
     'px-4 pt-6 pb-2',
     'md:px-12 md:pt-10 md:pb-4',
   ]);
