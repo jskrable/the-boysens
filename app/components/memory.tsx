@@ -7,8 +7,8 @@ interface MemoryProps {
 
 function Memory({ memory }: MemoryProps) {
   return (
-    <div key={memory.id} className="border-2 rounded-lg p-2">
-      <Typography variant="p">{memory.entry}</Typography>
+    <div key={memory.id} className="border-2 border-slate-300 rounded-lg p-2">
+      <Typography variant="body">{memory.entry}</Typography>
       <span className="text-sm text-slate-500">{memory.createdAt.toLocaleDateString()}</span>
     </div>
   );

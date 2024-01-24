@@ -1,11 +1,16 @@
+import { clsx } from 'clsx';
 import NextLink from 'next/link';
 import { AnchorHTMLAttributes, ReactNode } from 'react';
 
-type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & { href: string; children: ReactNode };
+type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & { href: string; children: ReactNode; button?: boolean };
 
-function Link({ children, ...props }: LinkProps) {
+function Link({ children, button = false, ...props }: LinkProps) {
+  const classes = clsx({
+    'hover:underline': !button,
+    'border rounded-md bg-bark hover:brightness-200 text-canvas self-auto px-8 py-2': button,
+  });
   return (
-    <NextLink className="hover:underline" {...props}>
+    <NextLink className={classes} {...props}>
       {children}
     </NextLink>
   );

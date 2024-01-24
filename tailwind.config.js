@@ -6,6 +6,7 @@ module.exports = {
       colors: {
         bark: '#66421e',
         canvas: '#fff5e6',
+        gray: '#615f5a',
       },
     },
   },

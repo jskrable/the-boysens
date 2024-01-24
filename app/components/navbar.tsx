@@ -2,6 +2,7 @@ import Routes from '../routes';
 import { Link } from './link';
 
 function Navbar() {
+  // TODO try sticky top-0
   return (
     <nav className="flex gap-4 p-4 bg-bark text-canvas">
       <Link href={Routes.HOME}>HOME</Link>
