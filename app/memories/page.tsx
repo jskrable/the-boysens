@@ -10,7 +10,7 @@ export default async function Page() {
       <PageTitle title="Memories" />
       <div className="flex flex-col gap-4">
         {data.map((memory) => (
-          <Memory memory={memory} />
+          <Memory key={memory.id} memory={memory} />
         ))}
       </div>
     </div>
