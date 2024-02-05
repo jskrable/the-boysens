@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "next dev -p 3020",
     "build": "next build",
+    "build:preview": "next build && next start -p 3021",
     "start": "next start -p 3021",
     "format": "pnpm biome format --write .",
     "lint": "pnpm biome check .",
