@@ -1,39 +1,30 @@
-import { Memory } from '@/app/components/memory';
 import { PageTitle } from '@/app/components/pageTitle';
+import { AddMemory } from '@/app/memories/AddMemory';
 import { prisma } from '@/db/client';
-import { Button } from '../components/button';
+import { ShowMemories } from './ShowMemories';
 
 export default async function Page() {
   const data = await prisma.memory.findMany({ orderBy: { createdAt: 'desc' } });
 
-  // async function createMemory(formData: FormData) {
-  //   'use server'
+  async function createMemory(entry: string) {
+    'use server';
+    try {
+      const result = await prisma.memory.create({ data: { entry } });
+      // TODO figure out how to toss this into the cached data
+      // console.log(result);
+      // data.push(result);
+      return;
+    } catch (e) {
+      console.error('createMemory error > ', e);
+      return (e as Error).message;
+    }
+  }
 
-  //   const rawFormData = {
-  //     customerId: formData.get('customerId'),
-  //     amount: formData.get('amount'),
-  //     status: formData.get('status'),
-  //   }
-
-  //   // mutate data
-  //   // revalidate cache
-  // }
   return (
     <div>
       <PageTitle title="Memories" />
-      <div className="pt-2 pb-4 text-center">
-        <Button>Add your own</Button>
-      </div>
-      <div className="flex flex-col gap-4">
-        {data.map((memory) => (
-          <Memory key={memory.id} memory={memory} />
-        ))}
-      </div>
-      <div className="py-8 text-center">
-        <Button<ScrollToOptions> action={{ method: 'scrollTo', args: { top: 0, behavior: 'smooth' } }}>
-          Back to Top
-        </Button>
-      </div>
+      <AddMemory onSubmit={createMemory} />
+      <ShowMemories data={data} />
     </div>
   );
 }

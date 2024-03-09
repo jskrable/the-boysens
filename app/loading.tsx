@@ -1,9 +1,20 @@
-export default function Loading() {
+import { clsx } from 'clsx';
+
+interface LoadingProps {
+  size?: 'SM' | 'MD' | 'LG';
+}
+
+export default function Loading({ size = 'MD' }: LoadingProps) {
   return (
     <div role="status">
       <svg
         aria-hidden="true"
-        className="w-16 h-16 text-bark animate-spin fill-canvas"
+        className={clsx({
+          'text-bark animate-spin fill-canvas': true,
+          'w-8 h-8': size === 'SM',
+          'w-16 h-16': size === 'MD',
+          'w-24 h-24': size === 'LG',
+        })}
         viewBox="0 0 100 101"
         xmlns="http://www.w3.org/2000/svg"
       >

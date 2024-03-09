@@ -22,9 +22,10 @@ function Button<Action extends ScrollToOptions>({
     'bg-bark hover:brightness-200 text-canvas': variant === 'filled',
     'bg-canvas hover:brightness-50 text-bark': variant === 'outline',
   });
-  const onClick = action ? () => window[action.method](action.args) : undefined;
+  // const onClick = action ? () => window[action.method](action.args) : undefined;
   return (
-    <button type={type} {...props} onClick={onClick} className={classes}>
+    // <button type={type} {...props} onClick={onClick} className={classes}>
+    <button type={type} {...props} className={classes}>
       {children}
     </button>
   );
