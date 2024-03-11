@@ -2,11 +2,14 @@ import { Typography } from '@/app/components/typography';
 import { Memory } from './components/memory';
 import { useRandomMemory } from './hooks/useRandomMemory';
 import { RightsViolation } from './media/videos/RightsViolation';
+import { SplashedIt } from './media/videos/SplashedIt';
 
 export default async function Home() {
   const { getRandomMemory } = useRandomMemory();
   const randomMemory = await getRandomMemory();
-  const heads = Math.random() <= 0.1;
+  const random = Math.random();
+  const rights = random <= 0.1;
+  const splashed = random >= 0.9;
 
   return (
     <div className="flex flex-col gap-4">
@@ -16,7 +19,8 @@ export default async function Home() {
       </Typography>
 
       {/* TODO add link "Learn about your data rights" or something like that*/}
-      <RightsViolation initializeOpen={heads} />
+      <RightsViolation initializeOpen={rights} />
+      <SplashedIt initializeOpen={splashed} />
 
       {/* <Link href='https://www.facebook.com/109Darlington/videos/355830855737887/' target='_blank' rel='noreferrer'>
         Recording of the funeral service

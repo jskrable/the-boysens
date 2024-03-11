@@ -14,7 +14,6 @@ function RightsViolation({ initializeOpen = false }: RightsViolationProps) {
   return (
     <Modal id="right-violation-modal" visible={show} setVisible={setShow}>
       <Video
-        width={720}
         sources={[
           { src: '/videos/right-violation.mov', type: 'video/mp4' },
           { src: '/videos/right-violation.m4v', type: 'video/mp4' },
