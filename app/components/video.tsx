@@ -5,7 +5,8 @@ interface VideoProps {
 
 function Video({ sources, width = '100%' }: VideoProps) {
   return (
-    <video width={width} autoPlay muted controls>
+    // TODO add these as input props
+    <video width={width} autoPlay muted loop controls>
       {sources.map(({ src, type }) => (
         <source key={src} src={src} type={type} />
       ))}

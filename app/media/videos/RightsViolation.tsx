@@ -11,6 +11,7 @@ interface RightsViolationProps {
 function RightsViolation({ initializeOpen = false }: RightsViolationProps) {
   const [show, setShow] = useState(initializeOpen);
 
+  // TODO stop video on close
   return (
     <Modal id="right-violation-modal" visible={show} setVisible={setShow}>
       <Video
