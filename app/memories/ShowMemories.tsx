@@ -12,6 +12,7 @@ function ShowMemories({ data }: ShowMemoriesProps) {
   return (
     <div>
       <div className="flex flex-col gap-4">
+        {/* TODO irregular display, include newlines */}
         {data.map((memory) => (
           <Memory key={memory.id} memory={memory} />
         ))}

@@ -9,7 +9,7 @@ type ButtonProps<Action> = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: 'filled' | 'outline';
 };
 
-// TODO find DOM generic to extend so we don't have to add all new actions
+// TODO button size
 function Button<Action extends ScrollToOptions>({
   children,
   type,
@@ -22,9 +22,7 @@ function Button<Action extends ScrollToOptions>({
     'bg-bark hover:brightness-200 text-canvas': variant === 'filled',
     'bg-canvas hover:brightness-50 text-bark': variant === 'outline',
   });
-  // const onClick = action ? () => window[action.method](action.args) : undefined;
   return (
-    // <button type={type} {...props} onClick={onClick} className={classes}>
     <button type={type} {...props} className={classes}>
       {children}
     </button>

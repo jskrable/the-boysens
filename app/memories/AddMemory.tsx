@@ -4,7 +4,7 @@ import { Button } from '@/app/components/button';
 import { Modal } from '@/app/components/modal';
 import { Typography } from '@/app/components/typography';
 import Loading from '@/app/loading';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 interface AddMemoryProps {
   onSubmit: (entry: string) => Promise<string | undefined>;
@@ -17,19 +17,20 @@ function AddMemory({ onSubmit }: AddMemoryProps) {
   const [showInput, setShowInput] = useState(false);
 
   const reset = () => {
-    setLoading(false);
     setEntry('');
+    setError('');
     setShowInput(false);
   };
 
   const saveMemory = async () => {
     setLoading(true);
     const error = await onSubmit(entry);
-    // TODO actually show errors
+    setLoading(false);
     if (error) setError(error);
-    reset();
+    else reset();
   };
 
+  // TODO use HTML form
   return (
     <div className="pt-2 pb-4 text-center">
       <Modal id="enter-memory-modal" visible={showInput} setVisible={setShowInput}>
@@ -41,16 +42,17 @@ function AddMemory({ onSubmit }: AddMemoryProps) {
           className="p-2 w-full"
           placeholder="They did everything together..."
           rows={10}
+          aria-disabled={loading}
           disabled={loading}
         />
         <div>
-          <Button type="submit" disabled={loading} onClick={saveMemory}>
+          <Button type="submit" disabled={loading || !!error} onClick={saveMemory}>
             {loading ? <Loading size="SM" /> : 'Save'}
           </Button>
         </div>
+        {/* TODO add color to typography */}
+        {error && <p className="font-bold text-red-600">Something went wrong: {error}</p>}
       </Modal>
-      {/* TODO add color to typography */}
-      {error && <Typography variant="body">Something went wrong, please try again: {error}</Typography>}
       <Button onClick={() => setShowInput(true)}>Add your own</Button>
     </div>
   );

@@ -1,24 +1,26 @@
 import { PageTitle } from '@/app/components/pageTitle';
 import { AddMemory } from '@/app/memories/AddMemory';
 import { prisma } from '@/db/client';
+import { Memory } from '@/db/prisma';
+import { cache, useOptimistic } from 'react';
 import { ShowMemories } from './ShowMemories';
+import { createMemory } from './actions';
 
+// TODO try useOptimistic? Fetch Memories on scroll?
 export default async function Page() {
-  const data = await prisma.memory.findMany({ orderBy: { createdAt: 'desc' } });
+  let data: Memory[] = [];
+  const getData = cache(async () => {
+    return prisma.memory.findMany({ orderBy: { createdAt: 'desc' } });
+  });
 
-  async function createMemory(entry: string) {
-    'use server';
-    try {
-      const result = await prisma.memory.create({ data: { entry } });
-      // TODO figure out how to toss this into the cached data
-      // console.log(result);
-      // data.push(result);
-      return;
-    } catch (e) {
-      console.error('createMemory error > ', e);
-      return (e as Error).message;
-    }
-  }
+  data = await getData();
+
+  // const [optimisticData, addOptimisticData] = useOptimistic<Memory[]>(data, (state: Memory[], newMemory: string) => [
+  //   ...state,
+  //   { entry: { createdAt: new Date(), entry: newMemory } },
+  // ]);
+
+  // const [optimisticMemories, addOptimisticMemory] = useOptimistic<Memory[]>(data, (state) => state);
 
   return (
     <div>
