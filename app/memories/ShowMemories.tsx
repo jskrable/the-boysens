@@ -1,8 +1,8 @@
 'use client';
 
+import type { Memory as IMemory } from '@/db/prisma';
 import { Button } from '@/app/components/button';
 import { Memory } from '@/app/components/memory';
-import { Memory as IMemory } from '@/db/prisma';
 
 interface ShowMemoriesProps {
   data: IMemory[];

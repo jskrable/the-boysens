@@ -1,7 +1,7 @@
 'use client';
 
+import { type ReactNode, useEffect } from 'react';
 import { clsx } from 'clsx';
-import { ReactNode, useEffect } from 'react';
 
 interface ModalProps {
   id: string;

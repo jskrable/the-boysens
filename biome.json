@@ -1,6 +1,6 @@
 {
   "files": {
-    "ignore": ["*pnpm.*", "*/dist/**/*", ".next/**/*"]
+    "ignore": ["*pnpm.*", "*/dist/**/*", ".next/**/*", "./db/prisma/**/*"]
   },
   "linter": {
     "enabled": true,
@@ -19,5 +19,8 @@
       "quoteStyle": "single",
       "trailingComma": "all"
     }
+  },
+  "organizeImports": {
+    "enabled": false
   }
 }

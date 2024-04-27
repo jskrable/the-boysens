@@ -1,7 +1,7 @@
-import { readFileSync, readdirSync } from 'fs';
-import { join } from 'path';
-import { gunzipSync } from 'zlib';
-import { PrismaClient, Repository } from './prisma';
+import { PrismaClient, type Repository } from './prisma';
+import { readFileSync, readdirSync } from 'node:fs';
+import { join } from 'node:path';
+import { gunzipSync } from 'node:zlib';
 
 const prisma = new PrismaClient();
 const MEMORY_DIR = './db/legacy/';

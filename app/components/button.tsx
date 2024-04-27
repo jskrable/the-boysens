@@ -1,8 +1,8 @@
 'use client';
 
-import { DOMAction } from '@/app/@types/dom';
+import type { DOMAction } from '@/app/@types/dom';
 import { clsx } from 'clsx';
-import { ButtonHTMLAttributes } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
 
 type ButtonProps<Action> = ButtonHTMLAttributes<HTMLButtonElement> & {
   action?: DOMAction<Action>;
