@@ -1,9 +1,9 @@
-import { LayoutProps } from '@/.next/types/app/layout';
+import './globals.css';
+import type { LayoutProps } from '@/.next/types/app/layout';
 import { clsx } from 'clsx';
 import { Suspense } from 'react';
 import { Footer } from './components/footer';
 import { Navbar } from './components/navbar';
-import './globals.css';
 import Loading from './loading';
 
 export const metadata = {

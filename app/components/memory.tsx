@@ -1,4 +1,4 @@
-import { Memory as MemoryEntity } from '@/db/prisma';
+import type { Memory as MemoryEntity } from '@/db/prisma';
 import { Typography } from './typography';
 
 interface MemoryProps {

@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 type variant = 'body' | 'h1' | 'h2' | 'caption';
 interface TypographyProps {

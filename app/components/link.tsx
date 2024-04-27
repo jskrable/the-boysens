@@ -1,6 +1,6 @@
 import { clsx } from 'clsx';
 import NextLink from 'next/link';
-import { AnchorHTMLAttributes, ReactNode } from 'react';
+import type { AnchorHTMLAttributes, ReactNode } from 'react';
 
 type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & { href: string; children: ReactNode; button?: boolean };
 
