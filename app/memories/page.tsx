@@ -1,7 +1,7 @@
+import type { Memory } from '@/db/prisma';
 import { PageTitle } from '@/app/components/pageTitle';
 import { AddMemory } from '@/app/memories/AddMemory';
 import { prisma } from '@/db/client';
-import type { Memory } from '@/db/prisma';
 import { cache, useOptimistic } from 'react';
 import { ShowMemories } from './ShowMemories';
 import { createMemory } from './actions';
