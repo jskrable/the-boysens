@@ -1,31 +1,24 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Routes from '../routes';
 import { Link } from './link';
+import { NavMenu } from './icons/NavMenu';
 
 function Navbar() {
   // TODO check tailwind breakpoint
-  const mobile = window.screen.width <= 400;
   const [open, setOpen] = useState(false);
+  const [mobile, setMobile] = useState(false);
+  useEffect(() => {
+    if (window?.screen.width <= 400) setMobile(true);
+    else setMobile(false);
+  }, []);
 
   const Content = () => {
     if (mobile) {
       return (
         <div>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
-            onClick={() => setOpen(!open)}
-            onKeyDown={() => setOpen(!open)}
-          >
-            <title>navmenu</title>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-          </svg>
+          <NavMenu onClick={() => setOpen(!open)} />
           {open ? (
             <div className="flex flex-col pt-2 pl-1 gap-2 text-canvas">
               <Link href={Routes.HOME}>HOME</Link>
