@@ -7,15 +7,16 @@ interface ModalProps {
   id: string;
   children: ReactNode;
   visible: boolean;
-  setVisible: (visible: boolean) => void;
+  onClose: () => void;
 }
 
-function Modal({ id, children, visible, setVisible }: ModalProps) {
+function Modal({ id, children, visible, onClose }: ModalProps) {
   useEffect(() => {
+    // TODO click out doesn't work on overflow
     window.onclick = (e) => {
-      if ((e.target as Element).id === id) setVisible(false);
+      if ((e.target as Element).id === id) onClose();
     };
-  }, [id, setVisible]);
+  }, [id, onClose]);
 
   return (
     <div
@@ -35,3 +36,4 @@ function Modal({ id, children, visible, setVisible }: ModalProps) {
 }
 
 export { Modal };
+export type { ModalProps };

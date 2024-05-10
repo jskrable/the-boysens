@@ -32,7 +32,7 @@ function AddMemory({ onSubmit }: AddMemoryProps) {
   // TODO use HTML form
   return (
     <div className="pt-2 pb-4 text-center">
-      <Modal id="enter-memory-modal" visible={showInput} setVisible={setShowInput}>
+      <Modal id="enter-memory-modal" visible={showInput} onClose={reset}>
         <Typography variant="h2">Leave a memory</Typography>
         <textarea
           id="entry"
