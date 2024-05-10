@@ -7,10 +7,11 @@ interface MemoryProps {
 
 function Memory({ memory }: MemoryProps) {
   return (
-    <div key={memory.id} className="border-2 border-slate-300 rounded-lg p-2 whitespace-pre-wrap">
-      {/* TODO newlines not showing properly */}
+    <div id={memory.id.toString()} className="p-4 whitespace-pre-wrap">
       <Typography variant="body">{memory.entry}</Typography>
-      <span className="text-sm text-slate-500">{memory.createdAt.toLocaleDateString()}</span>
+      <span className="block w-full text-xs text-right italic text-slate-800">
+        {memory.createdAt.toLocaleDateString()}
+      </span>
     </div>
   );
 }

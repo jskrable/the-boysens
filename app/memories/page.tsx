@@ -23,10 +23,10 @@ export default async function Page() {
   // const [optimisticMemories, addOptimisticMemory] = useOptimistic<Memory[]>(data, (state) => state);
 
   return (
-    <div>
+    <>
       <PageTitle title="Memories" />
       <AddMemory onSubmit={createMemory} />
       <ShowMemories data={data} />
-    </div>
+    </>
   );
 }

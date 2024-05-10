@@ -16,9 +16,9 @@ export default function RootLayout({ children }: LayoutProps) {
     'flex flex-col grow',
     'items-center justify-between',
     'bg-canvas',
-    // TODO shrink this a bit for footer
-    'min-h-screen',
-    'px-4 pt-6 pb-2',
+    // 56 px (3.5 rem) for navbar
+    'min-h-[calc(100vh_-_56px)]',
+    'px-1 pt-4 pb-2',
     'md:px-12 md:pt-10 md:pb-4',
   ]);
   return (

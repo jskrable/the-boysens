@@ -1,30 +1,24 @@
 'use client';
 
-import type { DOMAction } from '@/app/@types/dom';
 import { clsx } from 'clsx';
 import type { ButtonHTMLAttributes } from 'react';
+import Loading from '../loading';
 
-type ButtonProps<Action> = ButtonHTMLAttributes<HTMLButtonElement> & {
-  action?: DOMAction<Action>;
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+  loading?: boolean;
   variant?: 'filled' | 'outline';
 };
 
 // TODO button size
-function Button<Action extends ScrollToOptions>({
-  children,
-  type,
-  action,
-  variant = 'filled',
-  ...props
-}: ButtonProps<Action>) {
+function Button({ children, disabled, loading = false, type, variant = 'filled', ...props }: ButtonProps) {
   const classes = clsx({
     'border rounded-md self-auto px-8 py-2': true,
     'bg-bark hover:brightness-200 text-canvas': variant === 'filled',
     'bg-canvas hover:brightness-50 text-bark': variant === 'outline',
   });
   return (
-    <button type={type} {...props} className={classes}>
-      {children}
+    <button {...props} type={type} className={classes} disabled={disabled || loading}>
+      {loading ? <Loading size="SM" /> : children}
     </button>
   );
 }
