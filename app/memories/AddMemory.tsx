@@ -3,7 +3,6 @@
 import { Button } from '@/app/components/button';
 import { Modal } from '@/app/components/modal';
 import { Typography } from '@/app/components/typography';
-import Loading from '@/app/loading';
 import { useState } from 'react';
 
 interface AddMemoryProps {
@@ -46,8 +45,8 @@ function AddMemory({ onSubmit }: AddMemoryProps) {
           disabled={loading}
         />
         <div>
-          <Button type="submit" disabled={loading || !!error} onClick={saveMemory}>
-            {loading ? <Loading size="SM" /> : 'Save'}
+          <Button type="submit" disabled={!!error} loading={loading} onClick={saveMemory}>
+            Save
           </Button>
         </div>
         {/* TODO add color to typography */}
