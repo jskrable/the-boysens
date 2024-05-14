@@ -16,6 +16,9 @@ export default async function Page() {
           Harm Reduction Near You
         </Link>
         {/* TODO how to use test strips */}
+        <Link href="https://dancesafe.org/fentanyl/" target="_blank" rel="noreferrer">
+          Get Fentanyl Test Strips
+        </Link>
         {/* TODO where to buy test strips */}
         {/* TODO loading icon while iframe loads */}
         {/* <Suspense fallback={<Loading />}> */}

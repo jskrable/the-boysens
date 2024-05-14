@@ -5,14 +5,8 @@ import Routes from '../routes';
 import { Link } from './link';
 import { NavMenu } from './icons/NavMenu';
 
-function Navbar() {
-  // TODO check tailwind breakpoint
+function Navbar({ mobile }: { mobile: boolean }) {
   const [open, setOpen] = useState(false);
-  const [mobile, setMobile] = useState(false);
-  useEffect(() => {
-    if (window?.screen.width <= 400) setMobile(true);
-    else setMobile(false);
-  }, []);
 
   const Content = () => {
     if (mobile) {
