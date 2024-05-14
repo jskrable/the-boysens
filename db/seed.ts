@@ -1,33 +1,44 @@
-import { PrismaClient, type Repository } from './prisma';
-import { readFileSync, readdirSync } from 'node:fs';
-import { join } from 'node:path';
-import { gunzipSync } from 'node:zlib';
+import { PrismaClient, type Repository } from "./prisma";
+import { readFileSync, readdirSync } from "node:fs";
+import { join } from "node:path";
+import { gunzipSync } from "node:zlib";
 
 const prisma = new PrismaClient();
-const MEMORY_DIR = './db/legacy/';
-const PHOTO_DIR = './public/images';
+const MEMORY_DIR = "./db/legacy/";
+const PHOTO_DIR = "./public/images";
 const ScriptInfo = [
   {
-    path: '/scripts/berries-pilot.pdf',
-    title: 'Berries: If Acai Loved Cocaine',
+    path: "/scripts/berries-pilot.pdf",
+    title: "Berries: If Acai Loved Cocaine",
     description:
-      "Disgraced semi-pro volleyball player Wells discovers a bountiful crop in his bungalow's backyard. Can he turn his prospects around, crack his emotionless exterior, and just maybe find love? Yes, yes, and yes. That is - if his adorable and machiavellian sidekick Lucy has anything to do with it.",
+      "Disgraced semi-pro volleyball player Wells discovers a bountiful crop in his bungalow's backyard. \
+      Can he turn his prospects around, crack his emotionless exterior, and just maybe find love? Yes, yes, and yes. \
+      That is - if his adorable and scheming sidekick Lucy has anything to do with it.",
   },
   {
-    path: '/scripts/evergreen-fitness-pilot.pdf',
-    title: 'Evergreen Fitness and Lawn Bowling Club',
+    path: "/scripts/evergreen-fitness-pilot.pdf",
+    title: "Evergreen Fitness and Lawn Bowling Club",
     description:
-      "Is he a writer, a lowly gym attendant, or a secret lawn bowling star? Why can't our hero be all three? Jim fights (or is it embraces?) his baser urges while trying to find higher meaning - at the bottom of a stack of beers! Join us for a romp through gym politics, apathy & the creative process, and an Australian mentor that just might be the messiah we all need.",
+      "Is he a writer, a lowly gym attendant, or a secret lawn bowling star? Why can't our hero be all three? \
+      Jim fights (or is it embraces?) his baser urges while trying to find higher meaning - at the bottom of a \
+      stack of beers! Join us for a romp through gym politics, apathy & the creative process, and an Australian \
+      mentor that just might be the messiah we all need.",
   },
   {
-    path: '/scripts/porpoise-pool-service.pdf',
-    title: 'Porpoise Pool Service',
-    description: '',
+    path: "/scripts/porpoise-pool-service.pdf",
+    title: "Porpoise Pool Service",
+    description:
+      "Would you trust your ex to raise your daughter if he was a houseboat-dwelling pool cleaner \
+    moonlighting as a small-time bookie fueled only by canned tuna, light beer, and Jeopardy! knowledge? Ok, \
+    so maybe not fit for child-rearing, but he sounds like a damn good time!",
   },
   {
-    path: '/scripts/spies-like-us-pilot.pdf',
+    path: "/scripts/spies-like-us-pilot.pdf",
     title: 'Spies "Like" Us',
-    description: '',
+    description:
+      "A buddy-cop send-up of the opt-in surveillance state. One man's dreams of smut stardom translated IRL. \
+      An incredibly elaborate method of calling his older brother a nerd? You decide on the thesis. What we can\
+      all agree on is the criminal panning of an all time classic, 'Angels in the Outfield'. Young JGL? Get outta here.",
   },
 ];
 
@@ -37,11 +48,11 @@ interface Row {
 }
 
 async function memories() {
-  console.log('seeding legacy memories from dynamoDB...');
+  console.log("seeding legacy memories from dynamoDB...");
   const legacyData = readdirSync(MEMORY_DIR).flatMap<Row>((file) => {
     const rawData = gunzipSync(readFileSync(join(MEMORY_DIR, file))).toString();
     const jsonData = rawData
-      .split('\n')
+      .split("\n")
       .filter(Boolean)
       .map<Row>((row) => {
         try {
@@ -65,27 +76,27 @@ async function memories() {
       createdAt: new Date(Date.parse(Item.timestamp.S)),
     })),
   });
-  console.log('loaded all memories into database');
+  console.log("loaded all memories into database");
 }
 
 async function photos() {
-  console.log('seeding photos...');
+  console.log("seeding photos...");
   const data = readdirSync(PHOTO_DIR).map((file) => ({
-    path: join('/images', file),
-    repository: 'PUBLIC' as Repository,
+    path: join("/images", file),
+    repository: "PUBLIC" as Repository,
   }));
   await prisma.photo.createMany({ data });
-  console.log('loaded all photos into database');
+  console.log("loaded all photos into database");
 }
 
 async function scripts() {
-  console.log('seeding scripts...');
+  console.log("seeding scripts...");
   const data = ScriptInfo.map((script) => ({
     ...script,
-    repository: 'PUBLIC' as Repository,
+    repository: "PUBLIC" as Repository,
   }));
   await prisma.script.createMany({ data });
-  console.log('loaded all scripts into database');
+  console.log("loaded all scripts into database");
 }
 
 async function main() {

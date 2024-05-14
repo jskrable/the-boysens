@@ -5,13 +5,15 @@ import { Suspense } from 'react';
 import { Footer } from './components/footer';
 import { Navbar } from './components/navbar';
 import Loading from './loading';
+import { userAgent } from './utils/userAgent';
 
 export const metadata = {
   title: 'The Boysens',
   description: 'They did everything together',
 };
 
-export default function RootLayout({ children }: LayoutProps) {
+export default async function RootLayout({ children }: LayoutProps) {
+  const { isMobile } = await userAgent();
   const classes = clsx([
     'flex flex-col grow',
     'items-center justify-between',
@@ -24,7 +26,7 @@ export default function RootLayout({ children }: LayoutProps) {
   return (
     <html lang="en">
       <body>
-        <Navbar />
+        <Navbar mobile={isMobile()} />
         <main className={classes}>
           <Suspense fallback={<Loading />}>
             <div className="md:w-4/5 lg:w-3/4 xl:w-2/3">{children}</div>

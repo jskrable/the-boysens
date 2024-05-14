@@ -24,13 +24,15 @@
     "next": "14.2.3",
     "react": "18.3.1",
     "react-dom": "18.2.0",
-    "sharp": "^0.33.2"
+    "sharp": "^0.33.2",
+    "ua-parser-js": "^1.0.37"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.6.3",
     "@types/node": "^20.12.7",
     "@types/react": "^18.3.2",
     "@types/react-dom": "^18.2.18",
+    "@types/ua-parser-js": "^0.7.39",
     "autoprefixer": "^10.4.17",
     "lefthook": "^1.6.10",
     "postcss": "^8.4.38",

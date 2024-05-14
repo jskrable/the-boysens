@@ -1,13 +1,12 @@
 'use client';
 
 import { Button } from '@/app/components/button';
-import { ArrowRight } from '@/app/components/icons/ArrowRight';
 import { Modal } from '@/app/components/modal';
 import { Video } from '@/app/components/video';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 function HomeVideos() {
-  const random = Math.random();
+  const random = useMemo(() => Math.random(), []);
 
   const [open, setOpen] = useState<'rights' | 'splash' | null>(null);
   if (random <= 0.1) setOpen('rights');
@@ -15,7 +14,12 @@ function HomeVideos() {
 
   return (
     <div className="py-8 flex flex-col gap-4">
-      <Modal id="right-violation-modal" visible={open === 'rights'} onClose={() => setOpen(null)}>
+      <Modal
+        id="right-violation-modal"
+        // decide on server if it shuold be rendered
+        visible={open === 'rights'}
+        onClose={() => setOpen(null)}
+      >
         <Video sources={[{ src: '/videos/right-violation.mov', type: 'video/mp4' }]} />
       </Modal>
       <Modal id="splashed-it-modal" visible={open === 'splash'} onClose={() => setOpen(null)}>
