@@ -2,7 +2,6 @@ import { Typography } from '@/app/components/typography';
 import { Memory } from './components/memory';
 import { useRandomMemory } from './hooks/useRandomMemory';
 import { HomeVideos } from './media/videos/HomeVideos';
-import { Metadata } from 'next';
 
 export default async function Home() {
   const { getRandomMemory } = useRandomMemory();
