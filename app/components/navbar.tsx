@@ -1,25 +1,54 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { type ReactNode, useState } from 'react';
 import Routes from '../routes';
-import { Link } from './link';
-import { NavMenu } from './icons/NavMenu';
+import { Home } from './Icons/Home';
+import { NavMenu } from './Icons/NavMenu';
+import NextLink from 'next/link';
+import { usePathname } from 'next/navigation';
+import { clsx } from 'clsx';
+
+const navConfig = [
+  { route: Routes.MEMORIES, children: 'memories' },
+  { route: Routes.PHOTOS, children: 'photos' },
+  { route: Routes.SCRIPTS, children: 'scripts' },
+  { route: Routes.RESOURCES, children: 'resources' },
+];
+
+interface NavLinkProps {
+  route: string;
+  children: ReactNode;
+}
 
 function Navbar({ mobile }: { mobile: boolean }) {
   const [open, setOpen] = useState(false);
+  const activePath = usePathname();
+
+  function NavLink({ route, children }: NavLinkProps) {
+    return (
+      <NextLink
+        className={clsx({
+          'p-3 hover:bg-yellow-800 hover:border-b-4 hover:border-canvas': true,
+          'bg-yellow-900 border-b-4 border-canvas': activePath === route,
+        })}
+        href={route}
+      >
+        {children}
+      </NextLink>
+    );
+  }
 
   const Content = () => {
     if (mobile) {
       return (
-        <div>
+        <div className="p-2 w-full">
           <NavMenu onClick={() => setOpen(!open)} />
           {open ? (
-            <div className="flex flex-col pt-2 pl-1 gap-2 text-canvas">
-              <Link href={Routes.HOME}>HOME</Link>
-              <Link href={Routes.MEMORIES}>memories</Link>
-              <Link href={Routes.PHOTOS}>photos</Link>
-              <Link href={Routes.SCRIPTS}>scripts</Link>
-              <Link href={Routes.RESOURCES}>resources</Link>
+            <div className="flex flex-col pt-2 pl-1 text-canvas">
+              <NavLink route={Routes.HOME}>home</NavLink>
+              {navConfig.map((section) => (
+                <NavLink key={section.route} {...section} />
+              ))}
             </div>
           ) : null}
         </div>
@@ -28,18 +57,19 @@ function Navbar({ mobile }: { mobile: boolean }) {
 
     return (
       <>
-        <Link href={Routes.HOME}>HOME</Link>
-        <div className="flex gap-2 text-canvas">
-          <Link href={Routes.MEMORIES}>memories</Link>
-          <Link href={Routes.PHOTOS}>photos</Link>
-          <Link href={Routes.SCRIPTS}>scripts</Link>
-          <Link href={Routes.RESOURCES}>resources</Link>
+        <NavLink route={Routes.HOME}>
+          <Home />
+        </NavLink>
+        <div className="flex text-canvas">
+          {navConfig.map((section) => (
+            <NavLink key={section.route} {...section} />
+          ))}
         </div>
       </>
     );
   };
 
-  return <nav className="sticky top-0 flex gap-4 p-4 bg-bark text-canvas">{Content()}</nav>;
+  return <nav className="sticky top-0 flex bg-bark text-canvas">{Content()}</nav>;
 }
 
 export { Navbar };

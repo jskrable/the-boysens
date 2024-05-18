@@ -1,7 +1,5 @@
 import { Link } from '@/app/components/link';
-import { Suspense } from 'react';
 import { PageTitle } from '../components/pageTitle';
-import Loading from '../loading';
 
 export default async function Page() {
   return (
@@ -19,15 +17,21 @@ export default async function Page() {
         <Link href="https://dancesafe.org/fentanyl/" target="_blank" rel="noreferrer">
           Get Fentanyl Test Strips
         </Link>
-        {/* TODO where to buy test strips */}
+        <Link
+          href="https://www.pharmacy.ohio.gov/documents/pubs/naloxone/howtotest/how%20to%20test%20your%20drugs%20-%20using%20fentanyl%20test%20strips%20(english).pdf"
+          target="_blank"
+          rel="noreferrer"
+        >
+          How to Test Your Drugs
+        </Link>
         {/* TODO loading icon while iframe loads */}
         {/* <Suspense fallback={<Loading />}> */}
-        <iframe
+        {/* <iframe
           title="Naloxone Map"
           src="https://www.google.com/maps/d/u/0/embed?mid=1R4YEVrWzXD7zq2ZpyWVV7PEWYumijq6L"
           width="600"
           height="450"
-        />
+        /> */}
         {/* </Suspense> */}
       </div>
     </div>
