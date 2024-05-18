@@ -3,14 +3,16 @@
 import { Button } from '@/app/components/button';
 import { Modal } from '@/app/components/modal';
 import { Video } from '@/app/components/video';
-import { useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function HomeVideos() {
-  const random = useMemo(() => Math.random(), []);
-
   const [open, setOpen] = useState<'rights' | 'splash' | null>(null);
-  if (random <= 0.1) setOpen('rights');
-  if (random >= 0.9) setOpen('splash');
+
+  useEffect(() => {
+    const random = Math.random();
+    if (random <= 0.1) setOpen('rights');
+    if (random >= 0.9) setOpen('splash');
+  });
 
   return (
     <div className="py-8 flex flex-col gap-4">
