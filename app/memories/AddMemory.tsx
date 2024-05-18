@@ -34,11 +34,11 @@ function AddMemory({ onSubmit }: AddMemoryProps) {
     <div className="p-2 pb-4 text-left">
       <div className="flex flex-col gap-4 md:flex-row">
         <Typography variant="body">
-          This is a place to share memories of Jim and Sam. It is a place to talk to them, to think about them, to
-          remember them.
+          This is a place to share memories of Jim and Sam. Talk to them, think about them, remember them, carry them
+          on.
         </Typography>
         {/* TODO center this on mobile */}
-        <div className="w-1/2 text-center md:w-full md:text-right">
+        <div className="md:w-1/2 text-center md:text-right">
           <Button onClick={() => setShowInput(true)}>Share Something</Button>
         </div>
       </div>
@@ -59,7 +59,6 @@ function AddMemory({ onSubmit }: AddMemoryProps) {
             Save
           </Button>
         </div>
-        {/* TODO add color to typography */}
         {error && <p className="font-bold text-red-600">Something went wrong: {error}</p>}
       </Modal>
     </div>

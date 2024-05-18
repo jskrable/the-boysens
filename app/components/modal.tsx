@@ -11,6 +11,7 @@ interface ModalProps {
   onClose: () => void;
 }
 
+// TODO mobile styles are junk
 function Modal({ id, children, visible, onClose }: ModalProps) {
   useEffect(() => {
     // TODO click out doesn't work on overflow

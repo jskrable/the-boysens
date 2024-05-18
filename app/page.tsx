@@ -25,8 +25,8 @@ export default async function Home() {
           <div className="border-2 border-slate-300 rounded-lg p-2">
             <Memory memory={randomMemory} />
           </div>
-          <div className="">
-            <Link href={Routes.MEMORIES}>Read more memories like the one above</Link>
+          <div className="text-center text-bark">
+            <Link href={Routes.MEMORIES}>Click here to read more memories like the one above</Link>
           </div>
         </div>
       )}
