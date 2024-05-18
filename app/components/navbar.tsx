@@ -43,10 +43,10 @@ function Navbar({ mobile }: { mobile: boolean }) {
   const Content = () => {
     if (mobile) {
       return (
-        <div className="p-3 w-full">
+        <div className="p-4 w-full">
           <NavMenu onClick={() => setOpen(!open)} />
           {open ? (
-            <div className="flex flex-col pt-2 pl-1 text-canvas opacit">
+            <div className="flex flex-col pt-2 pl-1 text-canvas">
               <NavLink route={Routes.HOME}>home</NavLink>
               {navConfig.map((section) => (
                 <NavLink key={section.route} {...section} />
