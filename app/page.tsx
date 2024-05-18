@@ -2,6 +2,8 @@ import { Typography } from '@/app/components/typography';
 import { Memory } from './components/memory';
 import { useRandomMemory } from './hooks/useRandomMemory';
 import { HomeVideos } from './media/videos/HomeVideos';
+import Routes from './routes';
+import { Link } from './components/link';
 
 export default async function Home() {
   const { getRandomMemory } = useRandomMemory();
@@ -19,8 +21,13 @@ export default async function Home() {
       </Link> */}
 
       {randomMemory && (
-        <div className="border-2 border-slate-300 rounded-lg p-2">
-          <Memory memory={randomMemory} />
+        <div className="flex flex-col gap-4">
+          <div className="border-2 border-slate-300 rounded-lg p-2">
+            <Memory memory={randomMemory} />
+          </div>
+          <div className="">
+            <Link href={Routes.MEMORIES}>Read more memories like the one above</Link>
+          </div>
         </div>
       )}
 

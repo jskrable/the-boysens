@@ -29,7 +29,7 @@ export default async function RootLayout({ children }: LayoutProps) {
         <Navbar mobile={isMobile()} />
         <main className={classes}>
           <Suspense fallback={<Loading />}>
-            <div className="md:w-4/5 lg:w-3/4 xl:w-2/3">{children}</div>
+            <div className="p-2 md:w-4/5 lg:w-3/4 xl:w-2/3">{children}</div>
           </Suspense>
           <Footer />
         </main>

@@ -1,6 +1,6 @@
 'use client';
 
-import { type ReactNode, useState } from 'react';
+import { type ReactNode, useState, useCallback, useEffect } from 'react';
 import Routes from '../routes';
 import { Home } from './Icons/Home';
 import { NavMenu } from './Icons/NavMenu';
@@ -27,6 +27,8 @@ function Navbar({ mobile }: { mobile: boolean }) {
   function NavLink({ route, children }: NavLinkProps) {
     return (
       <NextLink
+        onLoad={() => setOpen(false)}
+        onClick={() => setOpen(false)}
         className={clsx({
           'p-3 hover:bg-yellow-800 hover:border-b-4 hover:border-canvas': true,
           'bg-yellow-900 border-b-4 border-canvas': activePath === route,
@@ -41,10 +43,10 @@ function Navbar({ mobile }: { mobile: boolean }) {
   const Content = () => {
     if (mobile) {
       return (
-        <div className="p-2 w-full">
+        <div className="p-3 w-full">
           <NavMenu onClick={() => setOpen(!open)} />
           {open ? (
-            <div className="flex flex-col pt-2 pl-1 text-canvas">
+            <div className="flex flex-col pt-2 pl-1 text-canvas opacit">
               <NavLink route={Routes.HOME}>home</NavLink>
               {navConfig.map((section) => (
                 <NavLink key={section.route} {...section} />
