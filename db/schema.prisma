@@ -1,6 +1,7 @@
 generator client {
-  provider = "prisma-client-js"
-  output = "../db/prisma"
+  provider      = "prisma-client-js"
+  output        = "../db/prisma"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
 }
 
 datasource db {
@@ -9,8 +10,8 @@ datasource db {
 }
 
 model Memory {
-  id Int @id @default(autoincrement())
-  entry String
+  id        Int      @id @default(autoincrement())
+  entry     String
   createdAt DateTime @default(now()) @map("created_at")
 
   @@map("memories")
@@ -21,18 +22,18 @@ enum Repository {
 }
 
 model Photo {
-  id Int @id @default(autoincrement())
-  path String
+  id         Int        @id @default(autoincrement())
+  path       String
   repository Repository
 
   @@map("photos")
 }
 
 model Script {
-  id Int @id @default(autoincrement())
-  path String
-  repository Repository
-  title String
+  id          Int        @id @default(autoincrement())
+  path        String
+  repository  Repository
+  title       String
   description String
 
   @@map("scripts")

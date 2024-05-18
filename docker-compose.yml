@@ -1,4 +1,14 @@
 services:
+  app:
+    container_name: app
+    env_file:
+      - docker.env
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: app-latest
+    ports:
+      - 3000:3000
   db:
     container_name: db
     env_file:
@@ -6,6 +16,6 @@ services:
     build:
       context: ./
       dockerfile: db/Dockerfile
-    image: app-db-latest
+    image: db-latest
     ports:
       - 5432:5432
