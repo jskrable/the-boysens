@@ -1,0 +1,9 @@
+[build]
+builder = "DOCKERFILE"
+buildCommand = "echo building..."
+
+[deploy]
+startCommand = "echo starting..."
+healthcheckPath = "/api/health"
+healthcheckTimeout = 100
+restartPolicyType = "never"
