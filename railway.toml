@@ -1,9 +1,10 @@
 [build]
 builder = "DOCKERFILE"
-buildCommand = "echo building..."
+buildCommand = "pnpm build"
+dockerfilePath = "Dockerfile"
 
 [deploy]
-startCommand = "echo starting..."
-healthcheckPath = "/api/health"
-healthcheckTimeout = 100
-restartPolicyType = "never"
+numReplicas = 1
+sleepApplication = false
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10
