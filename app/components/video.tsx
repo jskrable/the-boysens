@@ -5,7 +5,14 @@ type VideoProps = MediaHTMLAttributes<HTMLVideoElement> & {
   width?: number | string;
 };
 
-function Video({ sources, autoPlay = false, muted = false, loop = true, controls = true, width = '100%' }: VideoProps) {
+function Video({
+  sources,
+  autoPlay = false,
+  muted = false,
+  loop = false,
+  controls = true,
+  width = '100%',
+}: VideoProps) {
   return (
     <video autoPlay={autoPlay} controls={controls} loop={loop} muted={muted} width={width}>
       {sources.map(({ src, type }) => (
