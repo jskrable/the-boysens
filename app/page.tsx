@@ -32,6 +32,8 @@ export default async function Home() {
       )}
 
       <HomeVideos />
+
+      <Typography variant="body">Coming Soon..</Typography>
     </div>
   );
 }
