@@ -1,6 +1,6 @@
 'use client';
 
-import { type ReactNode, useState, useCallback, useEffect } from 'react';
+import { type ReactNode, useState } from 'react';
 import Routes from '../routes';
 import { Home } from './Icons/Home';
 import { NavMenu } from './Icons/NavMenu';
@@ -12,7 +12,7 @@ const navConfig = [
   { route: Routes.MEMORIES, children: 'memories' },
   // { route: Routes.PHOTOS, children: 'photos' },
   { route: Routes.SCRIPTS, children: 'scripts' },
-  // { route: Routes.RESOURCES, children: 'resources' },
+  { route: Routes.RESOURCES, children: 'resources' },
 ];
 
 interface NavLinkProps {
