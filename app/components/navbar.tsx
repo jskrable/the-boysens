@@ -2,8 +2,8 @@
 
 import { type ReactNode, useState } from 'react';
 import Routes from '../routes';
-import { Home } from './Icons/Home';
-import { NavMenu } from './Icons/NavMenu';
+import { Home } from './icons/Home';
+import { NavMenu } from './icons/NavMenu';
 import NextLink from 'next/link';
 import { usePathname } from 'next/navigation';
 import { clsx } from 'clsx';
