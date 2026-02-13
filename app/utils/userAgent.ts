@@ -8,7 +8,7 @@ async function userAgent() {
     throw new Error('[Server method] you are importing a server-only module outside of server');
   }
 
-  const { get } = headers();
+  const { get } = await headers();
   const rawUserAgent = get('user-agent') ?? '';
   const parsed = new uaParser(rawUserAgent);
 

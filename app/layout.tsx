@@ -1,5 +1,4 @@
 import './globals.css';
-import type { LayoutProps } from '@/.next/types/app/layout';
 import { clsx } from 'clsx';
 import { Suspense } from 'react';
 import { Footer } from './components/footer';
@@ -12,7 +11,7 @@ export const metadata = {
   description: 'They did everything together',
 };
 
-export default async function RootLayout({ children }: LayoutProps) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const { isMobile } = await userAgent();
   const classes = clsx([
     'flex flex-col grow',
